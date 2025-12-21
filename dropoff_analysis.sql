@@ -1,0 +1,3 @@
+-- Drop-off analysis
+-- Check waiting time for rides
+-- Compare cancelled vs completed rides
