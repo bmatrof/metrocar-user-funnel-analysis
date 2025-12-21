@@ -1,0 +1,3 @@
+-- Funnel overview
+-- This file contains the base funnel aggregation logic
+-- used to understand user drop-off across key steps
