@@ -1,30 +1,9 @@
--- Waiting time analysis
--- Simple checks to understand delays and cancellations
+-- Waiting time by segments
+-- Focus: where waiting time is the highest
 
 
 --------------------------------------------------
--- 1. Average waiting time: cancelled vs completed
---------------------------------------------------
-
-SELECT
-    'cancelled' AS ride_type,
-    AVG(EXTRACT(EPOCH FROM (accept_ts - request_ts)) / 60) AS avg_wait_minutes
-FROM ride_requests
-WHERE cancel_ts IS NOT NULL
-  AND accept_ts IS NOT NULL
-
-UNION ALL
-
-SELECT
-    'completed' AS ride_type,
-    AVG(EXTRACT(EPOCH FROM (accept_ts - request_ts)) / 60) AS avg_wait_minutes
-FROM ride_requests
-WHERE dropoff_ts IS NOT NULL
-  AND accept_ts IS NOT NULL;
-
-
---------------------------------------------------
--- 2. Waiting time by hour
+-- 1. Waiting time by hour of day
 --------------------------------------------------
 
 SELECT
@@ -37,7 +16,7 @@ ORDER BY request_hour;
 
 
 --------------------------------------------------
--- 3. Waiting time by platform
+-- 2. Waiting time by platform
 --------------------------------------------------
 
 SELECT
@@ -49,5 +28,5 @@ JOIN signups s
 JOIN app_downloads d
     ON s.session_id = d.app_download_key
 WHERE r.accept_ts IS NOT NULL
-GROUP BY d.platform;
-
+GROUP BY d.platform
+ORDER BY avg_wait_minutes DESC;
