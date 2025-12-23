@@ -22,3 +22,17 @@ SELECT
 FROM funnel_steps f
 CROSS JOIN start_step s
 ORDER BY f.funnel_step;
+
+-- Funnel after ride completion
+-- Completed ride → payment → review
+
+SELECT 'completed_rides' AS step, COUNT(*) AS total
+FROM ride_requests
+WHERE dropoff_ts IS NOT NULL
+UNION ALL
+SELECT 'payments_completed', COUNT(*)
+FROM transactions
+UNION ALL
+SELECT 'reviews_submitted', COUNT(*)
+FROM reviews;
+
