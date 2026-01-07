@@ -1,5 +1,10 @@
 # Metrocar User Funnel & Drop-off Analysis
 
+## Tableau Public dashboards
+
+- [01 — Executive Overview (Dashboard)](https://public.tableau.com/views/MetrocarFunnelAnalysis_17678137394960/01_ExecutiveOverview?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+- [02 — Drop-off Segments (Dashboard)](https://public.tableau.com/views/MetrocarFunnelAnalysis_17678137394960/02_Drop-offSegments?:language=en-GB&:sid=&:redirect=auth&:display_count=n&:origin=viz_share_link)
+
 ## Overview
 This project explores the user funnel of a ride-hailing platform (Metrocar) to see where users drop off and what might be causing it.  
 The goal was not only to measure funnel conversion, but also to better understand why some rides end up being cancelled.
